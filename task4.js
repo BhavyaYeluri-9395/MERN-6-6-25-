@@ -1,50 +1,33 @@
-// Validation for left form
-document.getElementById('leftForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+document.getElementById('applicationForm').addEventListener('submit', function (e) {
+  e.preventDefault(); // Prevent actual form submission
+  const inputs = this.querySelectorAll('input, select, textarea');
+  let valid = true;
+  
+  inputs.forEach((input) => {
+    const errorDiv = input.nextElementSibling;
+    if (input.type === "radio") return;
 
-    const formData = new FormData(this);
-    const errors = [];
-
-    const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'address', 'city', 'state', 'description'];
-
-    requiredFields.forEach(field => {
-        const value = formData.get(field);
-        if (!value || value.trim() === '') {
-            errors.push(field);
-        }
-    });
-
-    const hosting = formData.get('hosting');
-    if (!hosting) {
-        errors.push('hosting');
-    }
-
-    if (errors.length > 0) {
-        alert('It is mandatory to fill all fields. Please complete the form.');
+    if (!input.checkValidity()) {
+      errorDiv.style.display = 'block';
+      valid = false;
     } else {
-        alert('Form submitted successfully!');
+      errorDiv.style.display = 'none';
     }
-});
+  });
 
-// Validation for right form
-document.getElementById('rightForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+  // Check radio buttons manually
+  const radioGroup = this.querySelectorAll('input[name="hosting"]');
+  const radioError = radioGroup[radioGroup.length - 1].nextElementSibling;
+  const radioChecked = Array.from(radioGroup).some(r => r.checked);
+  if (!radioChecked) {
+    radioError.style.display = 'block';
+    valid = false;
+  } else {
+    radioError.style.display = 'none';
+  }
 
-    const formData = new FormData(this);
-    const errors = [];
-
-    const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'address', 'city'];
-
-    requiredFields.forEach(field => {
-        const value = formData.get(field);
-        if (!value || value.trim() === '') {
-            errors.push(field);
-        }
-    });
-
-    if (errors.length > 0) {
-        alert('It is mandatory to fill all fields. Please complete the form.');
-    } else {
-        alert('Form submitted successfully!');
-    }
+  if (valid) {
+    alert("Form submitted successfully!");
+    this.reset();
+  }
 });
