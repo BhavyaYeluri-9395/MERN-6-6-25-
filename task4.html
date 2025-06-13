@@ -1,326 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Form</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      gap: 50px;
-      align-items: flex-start;
-    }
-
-    .form-section {
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      width: 400px;
-    }
-
-    .arrow {
-      font-size: 40px;
-      color: #666;
-      align-self: center;
-      margin-top: 200px;
-    }
-
-    .left-form .form-group {
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .left-form label {
-      width: 100px;
-      font-weight: normal;
-      color: #333;
-      font-size: 14px;
-      text-align: left;
-    }
-
-    .left-form .icon {
-      color: #666;
-      font-size: 16px;
-      width: 20px;
-    }
-
-    .left-form input, .left-form select, .left-form textarea {
-      flex: 1;
-      padding: 8px 12px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      font-size: 14px;
-      background: white;
-      color: #666;
-    }
-
-    .left-form input::placeholder {
-      color: #999;
-    }
-
-    .left-form select {
-      color: #666;
-    }
-
-    .left-form textarea {
-      resize: vertical;
-      min-height: 80px;
-      font-family: Arial, sans-serif;
-    }
-
-    .left-form .radio-group {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-      flex: 1;
-    }
-
-    .left-form .radio-item {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .left-form .radio-item label {
-      width: auto;
-      font-size: 14px;
-    }
-
-    .left-form button {
-      background: #ff9800;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 3px;
-      font-size: 14px;
-      cursor: pointer;
-      margin-top: 15px;
-    }
-
-    .left-form button:hover {
-      background: #f57c00;
-    }
-
-    .right-form .form-group {
-      margin-bottom: 20px;
-      position: relative;
-    }
-
-    .right-form .input-wrapper {
-      position: relative;
-      display: flex;
-      align-items: center;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      background: white;
-    }
-
-    .right-form .input-icon {
-      padding: 0 15px;
-      color: #ff6b6b;
-      font-size: 16px;
-    }
-
-    .right-form input {
-      flex: 1;
-      padding: 12px 15px;
-      border: none;
-      outline: none;
-      font-size: 14px;
-      background: transparent;
-    }
-
-    .right-form input::placeholder {
-      color: #999;
-      font-size: 12px;
-    }
-
-    .right-form .close-icon {
-      padding: 0 15px;
-      color: #ff6b6b;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .right-form .label {
-      position: absolute;
-      top: -8px;
-      left: 15px;
-      background: white;
-      padding: 0 5px;
-      font-size: 12px;
-      font-weight: bold;
-      color: #ff6b6b;
-    }
-
-    .right-form button {
-      width: 100%;
-      background: #ff6b6b;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 5px;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-
-    .right-form button:hover {
-      background: #ff5252;
-    }
-
-    .error-message {
-      color: #ff6b6b;
-      font-size: 12px;
-      margin-top: 5px;
-      margin-left: 15px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Application Form</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <!-- Left Form -->
-    <div class="form-section left-form">
-      <form id="leftForm">
-        <div class="form-group">
-          <span class="icon"></span>
-          <label>First Name</label>
-          <input type="text" name="firstName" placeholder="First Name">
-        </div>
-        <div class="form-group">
-          <span class="icon"></span>
-          <label>Last Name</label>
-          <input type="text" name="lastName" placeholder="Last Name">
-        </div>
-        <div class="form-group">
-          <span class="icon"></span>
-          <label>E-Mail</label>
-          <input type="email" name="email" placeholder="E-Mail Address">
-        </div>
-        <div class="form-group">
-          <span class="icon"></span>
-          <label>Phone #</label>
-          <input type="tel" name="phone" placeholder="+91 98765 43210">
-        </div>
-        <div class="form-group">
-          <span class="icon"></span>
-          <label>Address</label>
-          <input type="text" name="address" placeholder="Address">
-        </div>
-        <div class="form-group">
-          <span class="icon"></span>
-          <label>City</label>
-          <input type="text" name="city" placeholder="City">
-        </div>
-        <div class="form-group">
-          <span class="icon"></span>
-          <label>State</label>
-          <select name="state">
-            <option value="">Please select your state</option>
-            <option value="andhra-pradesh">Andhra Pradesh</option>
-            <option value="telangana">Telangana</option>
-            <option value="tamil-nadu">Tamil Nadu</option>
-            <!-- Add others as needed -->
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Do you have hosting?</label>
-          <div class="radio-group">
-            <div class="radio-item">
-              <input type="radio" name="hosting" id="yes" value="yes">
-              <label for="yes">Yes</label>
-            </div>
-            <div class="radio-item">
-              <input type="radio" name="hosting" id="no" value="no">
-              <label for="no">No</label>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <span class="icon"></span>
-          <label>Project Description</label>
-          <textarea name="description" placeholder="Project Description"></textarea>
-        </div>
-        <button type="submit">Send</button>
-      </form>
-    </div>
 
-    <div class="arrow">→</div>
+<form id="applicationForm" novalidate>
+  <label>First Name</label>
+  <input type="text" id="fname" required>
+  <div class="error">Please enter your first name</div>
 
-    <!-- Right Form -->
-    <div class="form-section right-form">
-      <form id="rightForm">
-        <div class="form-group">
-          <div class="label">First Name</div>
-          <div class="input-wrapper">
-            <span class="input-icon"></span>
-            <input type="text" name="firstName" placeholder="Please supply your first name">
-            <span class="close-icon">✕</span>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="label">Last Name</div>
-          <div class="input-wrapper">
-            <span class="input-icon"></span>
-            <input type="text" name="lastName" placeholder="Please supply your last name">
-            <span class="close-icon">✕</span>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="label">E-Mail</div>
-          <div class="input-wrapper">
-            <span class="input-icon"></span>
-            <input type="email" name="email" placeholder="Please supply your email address">
-            <span class="close-icon">✕</span>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="label">Phone #</div>
-          <div class="input-wrapper">
-            <span class="input-icon"></span>
-            <input type="tel" name="phone" placeholder="Please supply your mobile number">
-            <span class="close-icon">✕</span>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="label">Address</div>
-          <div class="input-wrapper">
-            <span class="input-icon"></span>
-            <input type="text" name="address" placeholder="Please supply your street address">
-            <span class="close-icon">✕</span>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="label">City</div>
-          <div class="input-wrapper">
-            <span class="input-icon"></span>
-            <input type="text" name="city" placeholder="Please supply your city">
-            <span class="close-icon">✕</span>
-          </div>
-        </div>
-        <button type="submit">Submit Application</button>
-      </form>
-    </div>
-  </div>
+  <label>Last Name</label>
+  <input type="text" id="lname" required>
+  <div class="error">Please enter your last name</div>
 
-  <script src="task4.js"></script>
+  <label>E-Mail</label>
+  <input type="email" id="email" required>
+  <div class="error">Please enter a valid email</div>
+
+  <label>Phone #</label>
+  <input type="tel" id="phone" required pattern="[0-9]{10}">
+  <div class="error">Please enter a 10-digit phone number</div>
+
+  <label>Address</label>
+  <input type="text" id="address" required>
+  <div class="error">Please enter your address</div>
+
+  <label>City</label>
+  <input type="text" id="city" required>
+  <div class="error">Please enter your city</div>
+
+  <label>State</label>
+  <select id="state" required>
+    <option value="">Please select your state</option>
+    <option value="AP">Andhra Pradesh</option>
+    <option value="TG">Telangana</option>
+  </select>
+  <div class="error">Please select your state</div>
+
+  <label>Do you have hosting?</label>
+  <input type="radio" name="hosting" value="yes" required> Yes
+  <input type="radio" name="hosting" value="no"> No
+  <div class="error">Please select an option</div>
+
+  <label>Project Description</label>
+  <textarea id="description" rows="3" required></textarea>
+  <div class="error">Please describe your project</div>
+
+  <button type="submit" class="submit-btn">Send</button>
+</form>
+
+<script src="script.js"></script>
 </body>
 </html>
